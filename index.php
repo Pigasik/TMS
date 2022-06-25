@@ -56,3 +56,87 @@
 // } else {
 //     echo "Точка расположена в IV четверти";
 // };
+
+// 1. Найти все положительные элементы массива
+
+$number = [-10, 100, -4, 0, 123, 432, 999, -145, -1050, 23, 573];
+$positive = [];
+
+foreach($number as $index){
+    if ($index > 0){
+        $positive[] = $index;
+    }
+}
+var_dump($positive);
+
+// 2. Найти элементы массива, которые больше среднеарифметического значения и вывести их ИНДЕКСЫ
+
+$number_2 = [-2, 0, 4, 10, 13, -15, 100, 20, 99];
+$sum = array_sum($number_2);
+$mid = $sum/count($number_2);
+
+for ($i = 0; $i < count($number_2); $i++){
+    if($number_2[$i] > $mid){
+        echo $i." ";
+    }
+}
+
+// 3. Вывести элементы массива, которые больше предыдущего
+
+$number_3 = [-12, 23, 2, -4, 5, 10];
+for ($i = 1; $i < count($number_3); $i++){
+    if ($number_3[$i] > $number_3[$i - 1]){
+        echo $number_3[$i] . " ";
+    }
+}
+
+// 4. Определить , есть ли в массиве  повторяющиеся элементы
+
+$number_4 = [2, 0, 2, 10, 5, 10];
+$array_count = array_count_values($number_4);
+
+foreach ($array_count as $key => $val){
+    if ($val > 1){
+        echo $key.' ';
+    } 
+}
+
+// 5. Удалить в массиве элементы, которые встречаются более двух раз
+
+$number_5 = [2, 0, 2, 10, 5, 10, 10, 2, 9, -18, 9];
+$array_count = array_count_values($number_5);
+$result = [];
+
+foreach ($array_count as $key => $value){
+    if ($value < 2){
+        $result[] = $key;
+    }
+}
+print_r($result);
+
+// 6. Определите, является ли массив двумерным
+
+$arr = [
+    "one" => [1, 2, 3, 4],
+    2 => ["a", "b", "c"],
+    "name" => ["Veronika", "Nik"],
+    23 => 1000
+];
+
+if ((count($arr, COUNT_RECURSIVE) == count($arr))){
+    echo 'Массив - одномерный';
+} else {
+    echo 'Массив - многомерный';
+};
+
+// 7. Вывести таблицу умножения
+
+$x = 1;
+$y = 10;
+
+for($i = $x; $i <= $y; $i++){
+    echo "Таблица умножение на ".$i.'</br>';
+    for($j = $x; $j <= $y; $j++){
+                echo $i." * ".$j." = ".$i*$j.'</br>';
+    }
+}
